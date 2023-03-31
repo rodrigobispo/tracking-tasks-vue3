@@ -18,7 +18,7 @@ export default defineComponent({
   },
   computed: {
     estilo() {
-        return this.msgAviso ? 'box-error has-text-weight-bold' : 'box has-text-weight-bold'
+        return this.msgAviso ? 'box box-error has-text-weight-bold' : 'box has-text-weight-bold'
     }
   }
 })
@@ -28,8 +28,7 @@ export default defineComponent({
 .box {
   background: #f8fad6;
 }
-.box-error {
+.box.box-error {
   background: #ffd1d1;
-  padding: 1.25rem;
 }
 </style>
