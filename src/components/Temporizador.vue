@@ -1,9 +1,9 @@
 <template>
-    <div class="is-flex is-align-items-center is-justify-content-space-between">
+    <section class="is-flex is-align-items-center is-justify-content-space-between">
         <Cronometro :segundos="tempoEmSegundos"/>
         <Botao @clique="iniciar" classIcone="fas fa-play" texto="Play" v-bind:desabilitado="cronometroRodando" />
         <Botao @clique="finalizar" classIcone="fas fa-stop" texto="Stop" v-bind:desabilitado="!cronometroRodando" />
-    </div>
+    </section>
 </template>
 
 <script lang="ts">
