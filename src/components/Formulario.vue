@@ -2,10 +2,13 @@
   <div class="box">
     <div class="columns">
       <div class="column is-8" role="form" aria-label="Formulário para criação de uma nova tarefa">
-        <input type="text" class="input" placeholder="Qual tarefa você deseja iniciar?" />
+        <input type="text" 
+          class="input" 
+          placeholder="Qual tarefa você deseja iniciar?" 
+          v-model="descricao" />
       </div>
       <div class="column">
-          <Temporizador/>
+          <Temporizador @aoEncerrarTemporizador="encerrarTarefa" />
       </div>
     </div>
   </div>
@@ -18,9 +21,21 @@ import Temporizador from './Temporizador.vue';
 
 export default defineComponent({
   name: 'Formulario',
+  data() {
+    return {
+      descricao: ''
+    }
+  },
   components: {
     Temporizador
   },
+  methods: {
+    encerrarTarefa(tempoDecorrido: number): void {
+      console.log("Tempo da tarefa: " + tempoDecorrido);
+      console.log("Descrição da tarefa: " + this.descricao);
+      this.descricao = ''
+    }
+  }
 })
 
 </script>
