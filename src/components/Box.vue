@@ -18,7 +18,7 @@ export default defineComponent({
         backgroundColor: '#ffd1d1' //padrão camel case
       },
       estiloSemTarefa: {
-        'background-color': '#f8fad6' //outra maneira
+        'background-color': '#f8fad6' //kebab case (outra maneira)
       },
     }
   },
