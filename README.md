@@ -20,5 +20,14 @@ npm run build
 npm run lint
 ```
 
+### Dependências utilizadas além do Vue CLI inicialmente:
+```
+npm i vue-router@4 (instação de recurso de rotas, para Vue 3)
+npm i vuex@next (instação de recurso relacionado a estado da app, para Vue 3)
+```
+
+### Instrutor
+O estudo e implementações foram realizados com base num treinamento da Alura, cujo instrutor foi o Vinicius Neves.
+
 ### Customize configuration
 See [Configuration Reference](https://cli.vuejs.org/config/).
