@@ -1,16 +1,10 @@
 <template>
   <main class="columns is-gapless is-multiline" :class="{ 'modo-escuro' : modoEscuroAtivo }">
     <div class="column is-one-quarters">
-      <BarraLateral @aoAlterTema="trocarTema"></BarraLateral>
+      <BarraLateral @aoAlterTema="trocarTema"/>
     </div>
     <div class="column is-three-quarters conteudo">
-      <Formulario @aoSalvarTarefa="salvaTarefa"></Formulario>
-      <div class="lista">
-        <Tarefa v-for="(tarefa, index) in tarefas" v-bind:key="index" :tarefa="tarefa" />
-        <Box v-show="listaVazia" :msgAviso=true>
-          Você não registrou tarefas hoje :(
-        </Box>
-      </div>
+      <router-view></router-view>
     </div>
   </main>
 </template>
@@ -18,45 +12,32 @@
 <script lang="ts">
 import { defineComponent } from 'vue';
 import BarraLateral from './components/BarraLateral.vue';
-import Box from './components/Box.vue';
-import Formulario from './components/Formulario.vue';
-import Tarefa from './components/Tarefa.vue';
-import ITarefa from './interfaces/ITarefa.js';
 
 export default defineComponent({
     name: "App",
     components: {
-      BarraLateral,
-      Formulario,
-      Tarefa,
-      Box
+      BarraLateral
     },
     data: () => {
       return {
-        tarefas: [] as ITarefa[],
         modoEscuroAtivo: false
       }
     },
     methods: {
-      salvaTarefa(tarefa: ITarefa) {
-        this.tarefas.push(tarefa)
-      },
       trocarTema(modoEscuroAtivado: boolean) {
         this.modoEscuroAtivo = modoEscuroAtivado
       }
     },
-    computed: {
-      listaVazia(): boolean {
-        return this.tarefas.length === 0
-      }
-    }
+    computed: {}
 });
+
 </script>
 
-<style scoped>
+<style>
 .lista {
-  padding: 0.5rem;
+  padding: 0.95rem;
 }
+
 main {
   /* variaveis */
   --bg-primario: #fff;
