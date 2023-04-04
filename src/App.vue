@@ -30,7 +30,6 @@ export default defineComponent({
     },
     computed: {}
 });
-
 </script>
 
 <style>
