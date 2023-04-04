@@ -1,22 +1,19 @@
 <template>
-    <section class="projetos">
-        <h1 class="title">Projetos</h1>
-        <form @submit.prevent="salvar">
-            <div class="field">
-                <div for="nomeDoProjeto" class="label">
-                    Nome do Projeto:
-                </div>
-                <input type="text" class="input" v-model="nomeDoProjeto" id="nomeDoProjeto">
+    <form @submit.prevent="salvar">
+        <div class="field">
+            <div for="nomeDoProjeto" class="label">
+                Nome do Projeto:
             </div>
-            <div class="field is-grouped">
-                <div class="control">
-                    <button class="button" type="submit">
-                        Salvar
-                    </button>
-                </div>
+            <input type="text" class="input" v-model="nomeDoProjeto" id="nomeDoProjeto">
+        </div>
+        <div class="field is-grouped">
+            <div class="control">
+                <button class="button" type="submit">
+                    Salvar
+                </button>
             </div>
-        </form>
-    </section>
+        </div>
+    </form>
 </template>
   
 <script lang="ts">
@@ -64,9 +61,3 @@ export default defineComponent({
     }
 });
 </script>
-
-<style scoped>
-.projetos {
-    padding: 1.25rem;
-}
-</style>
