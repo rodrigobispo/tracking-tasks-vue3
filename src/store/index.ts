@@ -7,7 +7,7 @@ interface EstadoDaAplicacao {
     projetos: IProjeto[]
 }
 
-/* eh preciso definir uma chave de acesso para o compontente obter a store */
+/* eh preciso definir uma chave de acesso para o componente obter a store */
 export const key: InjectionKey<Store<EstadoDaAplicacao>> = Symbol()
 
 export const store = createStore<EstadoDaAplicacao>({
