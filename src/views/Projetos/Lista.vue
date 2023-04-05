@@ -23,6 +23,11 @@
                             <i class="fas fa-pencil-alt"></i>
                         </span>
                     </router-link>
+                    <button class="button ml-2 is-danger" @click="remover(projeto.id)">
+                        <span class="icon is-small">
+                            <i class="fas fa-trash"></i>
+                        </span>
+                    </button>
                 </td>
             </tr>
         </tbody>
@@ -33,6 +38,7 @@
 import { computed, defineComponent } from 'vue';
 // import IProjeto from '../interfaces/IProjeto'
 import { useStore } from '@/store';
+import { REMOVE_PROJETO } from '@/store/tipo-de-mutacao';
 
 export default defineComponent({
     name: "Projetos",
@@ -43,6 +49,9 @@ export default defineComponent({
         }
     },
     methods: {
+        remover(id: string): void {
+            this.store.commit(REMOVE_PROJETO, id)
+        }
     },
     computed: {
     },
