@@ -3,11 +3,13 @@ import { InjectionKey } from "vue";
 import { createStore, Store, useStore as vuexUseStore } from "vuex";
 import { ADICIONA_PROJETO, ADICIONA_TAREFA, ALTERA_PROJETO, REMOVE_PROJETO } from "./tipo-de-mutacao";
 import ITarefa from "@/interfaces/ITarefa";
+import { INotificacao, TipoNotificacaoEnum } from "@/interfaces/INotificacao";
 
 
 interface EstadoDaAplicacao {
     projetos: IProjeto[],
-    tarefas: ITarefa[]
+    tarefas: ITarefa[],
+    notificacoes: INotificacao[]
 }
 
 /* eh preciso definir uma chave de acesso para o componente obter a store */
@@ -30,7 +32,27 @@ export const store = createStore<EstadoDaAplicacao>({
             //     nome: 'Vuex'
             // }
         ],
-        tarefas: []
+        tarefas: [],
+        notificacoes: [
+            {
+                id: 1,
+                tipo: TipoNotificacaoEnum.SUCCESS,
+                titulo: 'sucesso',
+                texto: 'Uma notificação de sucesso.'
+            } as INotificacao,
+            {
+                id: 2,
+                tipo: TipoNotificacaoEnum.ERROR,
+                titulo: 'erro',
+                texto: 'Uma notificação de erro.'
+            } as INotificacao,
+            {
+                id: 3,
+                tipo: TipoNotificacaoEnum.WARNING,
+                titulo: 'aviso',
+                texto: 'Uma notificação de aviso.'
+            } as INotificacao,
+        ]
     },
     mutations: {
         [ADICIONA_PROJETO](state, nomeDoProjeto: string) {
