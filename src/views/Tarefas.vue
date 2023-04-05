@@ -9,11 +9,13 @@
 </template>
   
 <script lang="ts">
-import { defineComponent } from 'vue';
+import { computed, defineComponent } from 'vue';
 import Box from '../components/Box.vue';
 import Formulario from '../components/Formulario.vue';
 import Tarefa from '../components/Tarefa.vue';
 import ITarefa from '../interfaces/ITarefa.js';
+import { useStore } from '@/store';
+import { ADICIONA_TAREFA } from '@/store/tipo-de-mutacao';
 
 export default defineComponent({
     name: "Tarefas",
@@ -24,17 +26,24 @@ export default defineComponent({
     },
     data: () => {
         return {
-            tarefas: [] as ITarefa[],
+            // tarefas: [] as ITarefa[],
         }
     },
     methods: {
         salvaTarefa(tarefa: ITarefa) {
-            this.tarefas.push(tarefa)
+            this.store.commit(ADICIONA_TAREFA, tarefa)
         }
     },
     computed: {
         listaVazia(): boolean {
             return this.tarefas.length === 0
+        }
+    },
+    setup() {
+        const store = useStore()
+        return {
+            store,
+            tarefas: computed(() => store.state.tarefas)
         }
     }
 });

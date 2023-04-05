@@ -1,11 +1,13 @@
 import IProjeto from "@/interfaces/IProjeto";
 import { InjectionKey } from "vue";
 import { createStore, Store, useStore as vuexUseStore } from "vuex";
-import { ADICIONA_PROJETO, ALTERA_PROJETO, REMOVE_PROJETO } from "./tipo-de-mutacao";
+import { ADICIONA_PROJETO, ADICIONA_TAREFA, ALTERA_PROJETO, REMOVE_PROJETO } from "./tipo-de-mutacao";
+import ITarefa from "@/interfaces/ITarefa";
 
 
 interface EstadoDaAplicacao {
-    projetos: IProjeto[]
+    projetos: IProjeto[],
+    tarefas: ITarefa[]
 }
 
 /* eh preciso definir uma chave de acesso para o componente obter a store */
@@ -27,7 +29,8 @@ export const store = createStore<EstadoDaAplicacao>({
             //     id: new Date().toISOString(),
             //     nome: 'Vuex'
             // }
-        ]
+        ],
+        tarefas: []
     },
     mutations: {
         [ADICIONA_PROJETO](state, nomeDoProjeto: string) {
@@ -43,6 +46,9 @@ export const store = createStore<EstadoDaAplicacao>({
         },
         [REMOVE_PROJETO](state, id: string) {
             state.projetos = state.projetos.filter(proj => proj.id != id)
+        },
+        [ADICIONA_TAREFA](state, tarefa: ITarefa) {
+            state.tarefas.push(tarefa)
         }
     }
 })
