@@ -15,7 +15,8 @@ import Formulario from '../components/Formulario.vue';
 import Tarefa from '../components/Tarefa.vue';
 import ITarefa from '../interfaces/ITarefa.js';
 import { useStore } from '@/store';
-import { ADICIONA_TAREFA } from '@/store/tipo-de-mutacao';
+import { ADICIONA_TAREFA, NOTIFICAR } from '@/store/tipo-de-mutacao';
+import { INotificacao, TipoNotificacaoEnum } from '@/interfaces/INotificacao';
 
 export default defineComponent({
     name: "Tarefas",
@@ -31,6 +32,14 @@ export default defineComponent({
     },
     methods: {
         salvaTarefa(tarefa: ITarefa) {
+            if (!tarefa.projeto) {
+                this.store.commit(NOTIFICAR, {
+                    titulo: 'Tarefa inválida',
+                    texto: 'Não há projeto relacionado para a tarefa.',
+                    tipo: TipoNotificacaoEnum.ERROR
+                } as INotificacao)
+                return
+            }
             this.store.commit(ADICIONA_TAREFA, tarefa)
         }
     },
