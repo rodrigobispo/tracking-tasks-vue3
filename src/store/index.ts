@@ -4,7 +4,7 @@ import { createStore, Store, useStore as vuexUseStore } from "vuex";
 import { ADICIONA_PROJETO, ADICIONA_TAREFA, ALTERA_PROJETO, DEFINIR_PROJETOS, NOTIFICAR, REMOVE_PROJETO } from "./tipo-de-mutacao";
 import ITarefa from "@/interfaces/ITarefa";
 import { INotificacao } from "@/interfaces/INotificacao";
-import { OBTER_PROJETOS } from "./tipo-de-acoes";
+import { ALTERAR_PROJETO, CADASTRAR_PROJETO, EXCLUIR_PROJETO, OBTER_PROJETOS } from "./tipo-de-acoes";
 import http from "@/http"
 
 
@@ -19,42 +19,9 @@ export const key: InjectionKey<Store<EstadoDaAplicacao>> = Symbol()
 
 export const store = createStore<EstadoDaAplicacao>({
     state: {
-        projetos: [
-            // estaticos/fixados
-            // {
-            //     id: new Date().toISOString(),
-            //     nome: 'TypeScript'
-            // },
-            // {
-            //     id: new Date().toISOString(),
-            //     nome: 'Vue'
-            // },
-            // {
-            //     id: new Date().toISOString(),
-            //     nome: 'Vuex'
-            // }
-        ],
+        projetos: [],
         tarefas: [],
-        notificacoes: [
-            // {
-            //     id: 1,
-            //     tipo: TipoNotificacaoEnum.SUCCESS,
-            //     titulo: 'sucesso',
-            //     texto: 'Uma notificação de sucesso.'
-            // } as INotificacao,
-            // {
-            //     id: 2,
-            //     tipo: TipoNotificacaoEnum.ERROR,
-            //     titulo: 'erro',
-            //     texto: 'Uma notificação de erro.'
-            // } as INotificacao,
-            // {
-            //     id: 3,
-            //     tipo: TipoNotificacaoEnum.WARNING,
-            //     titulo: 'aviso',
-            //     texto: 'Uma notificação de aviso.'
-            // } as INotificacao,
-        ]
+        notificacoes: []
     },
     mutations: {
         [ADICIONA_PROJETO](state, nomeDoProjeto: string) {
@@ -90,8 +57,20 @@ export const store = createStore<EstadoDaAplicacao>({
         [OBTER_PROJETOS]({ commit }) {
             http.get('projetos')
                 .then(resposta => commit(DEFINIR_PROJETOS, resposta.data))
+        },
+        [CADASTRAR_PROJETO](contexto, nomeDoProjeto: string) {
+            return http.post('/projetos', {
+                nome: nomeDoProjeto
+            })
+        },
+        [ALTERAR_PROJETO](contexto, projeto: IProjeto) {
+            return http.put(`/projetos/${projeto.id}`, projeto)
+        },
+        [EXCLUIR_PROJETO]({ commit }, idProjeto: string) {
+            return http.delete(`/projetos/${idProjeto}`)
+                .then(() => commit(REMOVE_PROJETO, idProjeto))
         }
-    } 
+    }
 })
 
 export function useStore(): Store<EstadoDaAplicacao> {

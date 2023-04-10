@@ -38,8 +38,8 @@
 import { computed, defineComponent } from 'vue';
 // import IProjeto from '../interfaces/IProjeto'
 import { useStore } from '@/store';
-import { REMOVE_PROJETO } from '@/store/tipo-de-mutacao';
-import { OBTER_PROJETOS } from '@/store/tipo-de-acoes';
+// import { REMOVE_PROJETO } from '@/store/tipo-de-mutacao';
+import { EXCLUIR_PROJETO, OBTER_PROJETOS } from '@/store/tipo-de-acoes';
 
 export default defineComponent({
     name: "Projetos",
@@ -51,7 +51,7 @@ export default defineComponent({
     },
     methods: {
         remover(id: string): void {
-            this.store.commit(REMOVE_PROJETO, id)
+            this.store.dispatch(EXCLUIR_PROJETO, id)
         }
     },
     computed: {

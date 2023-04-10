@@ -21,9 +21,9 @@ import { defineComponent } from 'vue';
 // import IProjeto from '../interfaces/IProjeto'
 import { useStore } from '@/store';
 import IProjeto from '@/interfaces/IProjeto';
-import { ADICIONA_PROJETO, ALTERA_PROJETO } from '@/store/tipo-de-mutacao';
 import { TipoNotificacaoEnum } from '@/interfaces/INotificacao';
 import useNotificador from '@/hooks/notificador'
+import { CADASTRAR_PROJETO, ALTERAR_PROJETO } from '@/store/tipo-de-acoes';
 
 export default defineComponent({
     name: "Formulario",
@@ -41,19 +41,21 @@ export default defineComponent({
     data: () => {
         return {
             nomeDoProjeto: '',
-            // projetos: [] as IProjeto[]
         }
     },
     methods: {
         salvar() {
             if (this.id) {
-                this.store.commit(ALTERA_PROJETO, {
+                this.store.dispatch(ALTERAR_PROJETO, {
                     id: this.id,
                     nome: this.nomeDoProjeto
-                } as IProjeto)
+                } as IProjeto).then(() => this.lidarComSucesso())
             } else {
-                this.store.commit(ADICIONA_PROJETO, this.nomeDoProjeto)
+                this.store.dispatch(CADASTRAR_PROJETO, this.nomeDoProjeto)
+                    .then(() => this.lidarComSucesso())
             }
+        },
+        lidarComSucesso() {
             this.nomeDoProjeto = ''
             this.notificar(TipoNotificacaoEnum.SUCCESS, 'Novo projeto foi salvo.', 'Prontinho :) seu projeto já está diponível.')
             this.$router.push('/projetos')
@@ -62,7 +64,7 @@ export default defineComponent({
     setup() {
         const store = useStore()
         const { notificar } = useNotificador()
-        return { 
+        return {
             store,
             notificar
         }

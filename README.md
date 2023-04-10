@@ -31,6 +31,11 @@ npm install -g json-server (consegue emular o funcionamento de APIs REST)
 npm i axios (responsável por criar requisições REST)
 ```
 
+#### Para executar o servidor json-server emulando conexão rest (rodar em outro bash/prompt de comando):
+```
+json-server --watch db.json
+```
+
 ### Instrutor
 O estudo e implementações foram realizados com base num treinamento da Alura, cujo instrutor foi o Vinicius Neves.
 
