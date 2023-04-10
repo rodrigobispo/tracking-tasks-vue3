@@ -25,6 +25,11 @@ npm run lint
 npm i vue-router@4 (instação de recurso de rotas, para Vue 3)
 npm i vuex@next (instação de recurso relacionado a estado da app, para Vue 3)
 ```
+### Dependências para rest e interação:
+```
+npm install -g json-server (consegue emular o funcionamento de APIs REST)
+npm i axios (responsável por criar requisições REST)
+```
 
 ### Instrutor
 O estudo e implementações foram realizados com base num treinamento da Alura, cujo instrutor foi o Vinicius Neves.
