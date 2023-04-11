@@ -15,8 +15,10 @@ import Formulario from '../components/Formulario.vue';
 import Tarefa from '../components/Tarefa.vue';
 import ITarefa from '../interfaces/ITarefa.js';
 import { useStore } from '@/store';
-import { ADICIONA_TAREFA, NOTIFICAR } from '@/store/tipo-de-mutacao';
+import { NOTIFICAR } from '@/store/tipo-de-mutacao';
 import { INotificacao, TipoNotificacaoEnum } from '@/interfaces/INotificacao';
+import { OBTER_TAREFAS, CADASTRAR_TAREFA } from '@/store/tipo-de-acoes';
+import { OBTER_PROJETOS } from '@/store/tipo-de-acoes';
 
 export default defineComponent({
     name: "Tarefas",
@@ -24,11 +26,6 @@ export default defineComponent({
         Formulario,
         Tarefa,
         Box
-    },
-    data: () => {
-        return {
-            // tarefas: [] as ITarefa[],
-        }
     },
     methods: {
         salvaTarefa(tarefa: ITarefa) {
@@ -40,7 +37,7 @@ export default defineComponent({
                 } as INotificacao)
                 return
             }
-            this.store.commit(ADICIONA_TAREFA, tarefa)
+            this.store.dispatch(CADASTRAR_TAREFA, tarefa)
         }
     },
     computed: {
@@ -50,6 +47,8 @@ export default defineComponent({
     },
     setup() {
         const store = useStore()
+        store.dispatch(OBTER_TAREFAS)
+        store.dispatch(OBTER_PROJETOS)
         return {
             store,
             tarefas: computed(() => store.state.tarefas)

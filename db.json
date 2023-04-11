@@ -4,5 +4,25 @@
       "id": 1,
       "nome": "Tasks Tracker"
     }
+  ],
+  "tarefas": [
+    {
+      "id": 1,
+      "duracaoEmSegundos": 120,
+      "descricao": "Configuração do ambiente.",
+      "projeto": {
+        "id": 1,
+        "nome": "Tasks Tracker"
+      }
+    },
+    {
+      "duracaoEmSegundos": 8,
+      "descricao": "Refatoração do Vuex",
+      "projeto": {
+        "id": 1,
+        "nome": "Tasks Tracker"
+      },
+      "id": 2
+    }
   ]
 }
