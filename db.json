@@ -17,7 +17,7 @@
     },
     {
       "duracaoEmSegundos": 8,
-      "descricao": "Refatoração do Vuex",
+      "descricao": "Refatoração do Vuex - Início",
       "projeto": {
         "id": 1,
         "nome": "Tasks Tracker"
