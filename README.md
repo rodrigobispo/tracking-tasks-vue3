@@ -24,6 +24,7 @@ npm run lint
 ```
 npm i vue-router@4 (instação de recurso de rotas, para Vue 3)
 npm i vuex@next (instação de recurso relacionado a estado da app, para Vue 3)
+npm i -g http-server
 ```
 ### Dependências para rest e interação:
 ```
