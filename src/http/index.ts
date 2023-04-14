@@ -1,7 +1,7 @@
 import axios, { AxiosInstance } from "axios"
 
 const clienteHttp: AxiosInstance = axios.create({
-  baseURL: "http://localhost:3000/"
+  baseURL: "https://json-server-vercel-tasktracker.vercel.app/"
 })
 
 export default clienteHttp
