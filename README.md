@@ -1,10 +1,12 @@
 # tracking-tasks-vue3
-
+## Descrição/objetivo do projeto:
+Aplicativo de estudo que tem por objetivo registrar tarefas realizadas com seus respectivos tempos gastos.
+## Instrutor
+O estudo e implementações foram realizados com base num treinamento da **Alura**, cujo instrutor foi o **Vinicius Neves**.
 ## Project setup
 ```
 npm install
 ```
-
 ### Compiles and hot-reloads for development
 ```
 npm run serve
@@ -36,9 +38,6 @@ npm i axios (responsável por criar requisições REST)
 ```
 json-server --watch db.json
 ```
-
-### Instrutor
-O estudo e implementações foram realizados com base num treinamento da Alura, cujo instrutor foi o Vinicius Neves.
 
 ### Customize configuration
 See [Configuration Reference](https://cli.vuejs.org/config/).
