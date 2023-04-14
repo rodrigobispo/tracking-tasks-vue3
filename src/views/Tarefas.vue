@@ -1,9 +1,6 @@
 <template>
     <Formulario @aoSalvarTarefa="salvaTarefa"></Formulario>
     <div class="lista">
-        <Box v-show="listaVazia" :msgAviso=true>
-            Você não registrou tarefas hoje :(
-        </Box>
         <div class="field">
             <p class="control has-icons-left has-icons-right">
                 <input class="input" type="text" placeholder="Digite para filtrar" v-model="filtro">
@@ -12,6 +9,9 @@
                 </span>
             </p>
         </div>
+        <Box v-show="listaVazia" :msgAviso=true>
+            Você não registrou tarefas hoje :(
+        </Box>
         <Tarefa v-for="(tarefa, index) in tarefas"
             v-bind:key="index"
             :tarefa="tarefa"
