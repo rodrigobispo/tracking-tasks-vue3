@@ -38,7 +38,7 @@
     },
     {
       "duracaoEmSegundos": 3,
-      "descricao": "Estudando padrões.",
+      "descricao": "Estudando padrões",
       "projeto": {
         "id": 3,
         "nome": "Estudando padrões de projeto."
