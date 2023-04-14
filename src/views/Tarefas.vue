@@ -99,12 +99,12 @@ export default defineComponent({
         store.dispatch(OBTER_PROJETOS);
 
         const filtro = ref("");
-        
-        const tarefas = computed(() => 
-                store.state.tarefa.tarefas.filter(
-                    (t) => !filtro.value || t.descricao.includes(filtro.value)
-                )
-            );
+
+        const tarefas = computed(() =>
+            store.state.tarefa.tarefas.filter(
+                (t) => !filtro.value || t.descricao.includes(filtro.value)
+            )
+        );
 
         return {
             store,
