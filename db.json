@@ -9,5 +9,15 @@
       "nome": "Estudo de TypeScript."
     }
   ],
-  "tarefas": []
+  "tarefas": [
+    {
+      "duracaoEmSegundos": 5,
+      "descricao": "Levantando materiais para início de estudos.",
+      "projeto": {
+        "nome": "Vuex",
+        "id": 1
+      },
+      "id": 1
+    }
+  ]
 }
