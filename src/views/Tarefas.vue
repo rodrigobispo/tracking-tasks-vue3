@@ -1,11 +1,22 @@
 <template>
     <Formulario @aoSalvarTarefa="salvaTarefa"></Formulario>
     <div class="lista">
-        <Tarefa v-for="(tarefa, index) in tarefas" v-bind:key="index" :tarefa="tarefa"
-            @ao-tarefa-clicada="selecionarTarefa" />
         <Box v-show="listaVazia" :msgAviso=true>
             Você não registrou tarefas hoje :(
         </Box>
+        <div class="field">
+            <p class="control has-icons-left has-icons-right">
+                <input class="input" type="text" placeholder="Digite para filtrar" v-model="filtro">
+                <span class="icon is-small is-left">
+                    <i class="fas fa-search"></i>
+                </span>
+            </p>
+        </div>
+        <Tarefa v-for="(tarefa, index) in tarefas"
+            v-bind:key="index"
+            :tarefa="tarefa"
+            @ao-tarefa-clicada="selecionarTarefa">
+        </Tarefa>
         <div class="modal" :class="{ 'is-active': tarefaSelecionada }" v-if="tarefaSelecionada">
             <div class="modal-background"></div>
             <div class="modal-card">
@@ -32,7 +43,7 @@
 </template>
   
 <script lang="ts">
-import { computed, defineComponent } from 'vue';
+import { computed, defineComponent, ref } from 'vue';
 import Box from '../components/Box.vue';
 import Formulario from '../components/Formulario.vue';
 import Tarefa from '../components/Tarefa.vue';
@@ -83,12 +94,22 @@ export default defineComponent({
         }
     },
     setup() {
-        const store = useStore()
-        store.dispatch(OBTER_TAREFAS)
-        store.dispatch(OBTER_PROJETOS)
+        const store = useStore();
+        store.dispatch(OBTER_TAREFAS);
+        store.dispatch(OBTER_PROJETOS);
+
+        const filtro = ref("");
+        
+        const tarefas = computed(() => 
+                store.state.tarefa.tarefas.filter(
+                    (t) => !filtro.value || t.descricao.includes(filtro.value)
+                )
+            );
+
         return {
             store,
-            tarefas: computed(() => store.state.tarefa.tarefas)
+            tarefas,
+            filtro
         }
     }
 });
