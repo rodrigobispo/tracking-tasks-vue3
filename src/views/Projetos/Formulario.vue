@@ -49,11 +49,12 @@ export default defineComponent({
         }
 
         const salvar = () => {
-            if (props.id) {
-                store.dispatch(ALTERAR_PROJETO, {
-                    id: props.id,
-                    nome: nomeDoProjeto.value
-                } as IProjeto).then(() => lidarComSucesso());
+          if (props.id) {
+            store.dispatch(ALTERAR_PROJETO, {
+              id: props.id,
+              nome: nomeDoProjeto.value
+            } as IProjeto).then(() => lidarComSucesso())
+              .catch((error) => console.log(`Erro ocorrido: ${error.response.data}`));
             } else {
                 store.dispatch(CADASTRAR_PROJETO, nomeDoProjeto.value)
                     .then(() => lidarComSucesso());
