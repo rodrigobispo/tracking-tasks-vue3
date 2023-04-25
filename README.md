@@ -1,9 +1,14 @@
-# tracking-tasks-vue3
+# Tasks Tracker VueJs
 ## Descrição/objetivo do projeto:
-Aplicativo de estudo que tem por objetivo registrar tarefas realizadas com seus respectivos tempos gastos.
+* Aplicativo de estudo que registra tarefas realizadas com seus respectivos tempos gastos.
+* Há o cadastro básico de projetos para relacionar as tarefas.
+* A versão final faz uso de uma API Json Server, cujo deploy encontra-se no Render.
+* O CSS do projeto utilizado é o Bulma.
+* Mais informações a seguir.
 ## Instrutor
-O estudo e implementações foram realizados com base num treinamento da **Alura**, cujo instrutor foi o **Vinicius Neves**.
+O estudo e implementações foram realizados com base em conhecimentos adquiridos no treinamento da [**Alura**](https://www.alura.com.br/), cujo instrutor foi o [**Vinicios Neves**](https://cursos.alura.com.br/user/viniciosneves).
 ## Project setup
+### Instalação das dependências
 ```
 npm install
 ```
@@ -15,11 +20,6 @@ npm run serve
 ### Compiles and minifies for production
 ```
 npm run build
-```
-
-### Lints and fixes files
-```
-npm run lint
 ```
 
 ### Dependências utilizadas além do Vue CLI inicialmente:
