@@ -10,17 +10,13 @@
     },
     {
       "id": 3,
-      "nome": "Estudando padrões de projeto."
-    },
-    {
-      "nome": "Teste",
-      "id": 4
+      "nome": "Padrões de projeto."
     }
   ],
   "tarefas": [
     {
-      "duracaoEmSegundos": 5,
-      "descricao": "Levantando materiais para início de estudos.",
+      "duracaoEmSegundos": 2,
+      "descricao": "teste1",
       "projeto": {
         "nome": "Vuex",
         "id": 1
@@ -28,31 +24,49 @@
       "id": 1
     },
     {
-      "duracaoEmSegundos": 4,
-      "descricao": "Levantando conteúdo.",
+      "duracaoEmSegundos": 1,
+      "descricao": "teste2",
       "projeto": {
-        "id": 2,
-        "nome": "Estudo de TypeScript."
+        "nome": "Vuex",
+        "id": 1
       },
       "id": 2
     },
     {
-      "duracaoEmSegundos": 3,
-      "descricao": "Estudando padrões",
+      "duracaoEmSegundos": 1,
+      "descricao": "teste3",
       "projeto": {
-        "id": 3,
-        "nome": "Estudando padrões de projeto."
+        "nome": "Vuex",
+        "id": 1
       },
       "id": 3
     },
     {
-      "duracaoEmSegundos": 7,
-      "descricao": "Teste",
+      "duracaoEmSegundos": 1,
+      "descricao": "teste4",
       "projeto": {
-        "nome": "Teste",
-        "id": 4
+        "nome": "Vuex",
+        "id": 1
       },
       "id": 4
+    },
+    {
+      "duracaoEmSegundos": 0,
+      "descricao": "teste4",
+      "projeto": {
+        "nome": "Vuex",
+        "id": 1
+      },
+      "id": 5
+    },
+    {
+      "duracaoEmSegundos": 0,
+      "descricao": "teste6",
+      "projeto": {
+        "id": 2,
+        "nome": "Estudo de TypeScript."
+      },
+      "id": 6
     }
   ]
 }

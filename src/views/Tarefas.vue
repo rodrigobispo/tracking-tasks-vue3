@@ -1,7 +1,8 @@
 <template>
     <Formulario @aoSalvarTarefa="salvaTarefa"></Formulario>
     <div class="lista">
-        <div class="field">
+      <div class="columns">
+        <div class="field column is-four-fifths">
             <p class="control has-icons-left has-icons-right">
                 <input class="input" type="text" placeholder="Digite para filtrar" v-model="filtro">
                 <span class="icon is-small is-left">
@@ -9,6 +10,10 @@
                 </span>
             </p>
         </div>
+        <div class="column">
+          <button class="button is-danger is-light is-normal is-fullwidth" title="Todas as tarefas" @click="removerTodasTarefas">Remover Todas</button>
+        </div>
+      </div>
         <Box v-show="listaVazia" :msgAviso=true>
             Você não registrou tarefas hoje :(
         </Box>
@@ -52,7 +57,7 @@ import ITarefa from '../interfaces/ITarefa.js';
 import { useStore } from '@/store';
 import { NOTIFICAR } from '@/store/tipo-de-mutacao';
 import { INotificacao, TipoNotificacaoEnum } from '@/interfaces/INotificacao';
-import { OBTER_TAREFAS, CADASTRAR_TAREFA, ALTERAR_TAREFA, OBTER_PROJETOS } from '@/store/tipo-de-acoes';
+import { OBTER_TAREFAS, CADASTRAR_TAREFA, ALTERAR_TAREFA, OBTER_PROJETOS, EXCLUIR_TODAS_TAREFAS } from '@/store/tipo-de-acoes';
 import Modal from '@/components/Modal.vue';
 
 export default defineComponent({
@@ -84,6 +89,9 @@ export default defineComponent({
         alterarTarefa() {
             this.store.dispatch(ALTERAR_TAREFA, this.tarefaSelecionada)
                 .then(() => this.fecharModal())
+        },
+        removerTodasTarefas() {
+          this.store.dispatch(EXCLUIR_TODAS_TAREFAS, this.tarefas)
         }
     },
     computed: {
