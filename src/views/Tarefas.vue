@@ -11,7 +11,12 @@
             </p>
         </div>
         <div class="column">
-          <button class="button is-danger is-light is-normal is-fullwidth" title="Todas as tarefas" @click="removerTodasTarefas">Remover Todas</button>
+          <button
+            class="button is-danger is-light is-fullwidth"
+            title="Todas as tarefas"
+            @click="removerTodasTarefas">
+            Remover Todas
+          </button>
         </div>
       </div>
         <Box v-show="listaVazia" :msgAviso=true>
