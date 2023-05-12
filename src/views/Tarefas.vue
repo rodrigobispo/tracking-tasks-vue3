@@ -123,7 +123,7 @@ export default defineComponent({
         })
         
         return {
-            tarefas: computed(() => store.state.tarefa.tarefas),
+            tarefas: computed(() => store.state.tarefa.tarefas?.slice(0).reverse()),
             store,
             filtro,
             tarefaSelecionada
